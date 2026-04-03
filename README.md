@@ -10,26 +10,26 @@ Building systems. Breaking them. Securing them.
 
 ---
 
-## ⚡ About Me
+## About Me
 - Focused on **full-stack development** and **cybersecurity**
 - Interested in **web and network security, backend systems, and real-world projects**
 ---
 
 ## 🛠 Tech Stack
 
-### 💻 Languages
+### Languages
 ![JavaScript](https://img.shields.io/badge/JavaScript-black?style=for-the-badge&logo=javascript)
 ![Python](https://img.shields.io/badge/Python-black?style=for-the-badge&logo=python)
 ![C++](https://img.shields.io/badge/C++-black?style=for-the-badge&logo=c%2B%2B)
 ![Java](https://img.shields.io/badge/Java-black?style=for-the-badge&logo=java)
 
-### 🌐 Web
+### Web
 ![HTML](https://img.shields.io/badge/HTML-black?style=for-the-badge&logo=html5)
 ![CSS](https://img.shields.io/badge/CSS-black?style=for-the-badge&logo=css3)
 ![React](https://img.shields.io/badge/React-black?style=for-the-badge&logo=react)
 ![Node.js](https://img.shields.io/badge/Node.js-black?style=for-the-badge&logo=node.js)
 
-### ⚙️ Tools & Concepts
+### Tools & Concepts
 ![Git](https://img.shields.io/badge/Git-black?style=for-the-badge&logo=git)
 ![Linux](https://img.shields.io/badge/Linux-black?style=for-the-badge&logo=linux)
 ![Networking](https://img.shields.io/badge/Networking-black?style=for-the-badge)
@@ -37,9 +37,9 @@ Building systems. Breaking them. Securing them.
 
 ---
 
-## 🚀 Featured Projects
+## Featured Projects
 
-### 🔐 Intrusion Detection System
+### Intrusion Detection System
 ML-based IDS using CICIDS2017 dataset  
 - Detects malicious traffic (XGBoost)  
 - Classifies attack types  
@@ -47,39 +47,39 @@ ML-based IDS using CICIDS2017 dataset
 
 ---
 
-### 🍯 Cowrie Honeypot CTI Pipeline
+### Cowrie Honeypot CTI Pipeline
 - Captures attacker behavior in real time  
 - Extracts IOCs (IPs, credentials, commands)  
 - Threat visualization dashboard  
 
 ---
 
-### 🌐 Full-Stack Apps
+### Full-Stack Apps
 - Backend APIs + frontend integration  
 - Focus on scalable and secure systems  
 
 ---
 
-## 📊 GitHub Stats
+## GitHub Stats
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=YOUR_USERNAME&show_icons=true&theme=tokyonight" />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=YOUR_USERNAME&layout=compact&theme=tokyonight" />
+  <img src="https://github-readme-stats.vercel.app/api?username=anjalipatil15&show_icons=true&theme=tokyonight" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=anjalipatil15&layout=compact&theme=tokyonight" />
 </p>
 
 ---
 
-## 📈 Current Focus
+## Current Focus
 - Backend systems & microservices  
 - Web security & vulnerability testing  
 - Threat detection systems  
 
 ---
 
-## 📫 Contact
+## Contact
 📧 anjalipatil.dev@gmail.com  
 
 ---
 
-## ⚡
+## 
 Prefer building real systems over just learning theory.
