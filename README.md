@@ -1,7 +1,5 @@
 # Hi, I'm Anjali!
 
-![Profile Views](https://komarev.com/ghpvc/?username=anjalipatil15&color=blue&style=flat)
-
 CS Student @ NMIMS MPSTME  
 Cybersecurity | 
 
