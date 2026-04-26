@@ -81,8 +81,3 @@ Cybersecurity |
 ##  Connect
 - LinkedIn: https://linkedin.com/in/anjalipatil15
 - Email: anjalipatil.dev@gmail.com 
-
----
-
-## ⚡ Focus
-Cybersecurity • Threat Detection • ML for Security • Systems
