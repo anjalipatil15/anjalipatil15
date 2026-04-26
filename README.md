@@ -1,7 +1,6 @@
 # Hi, I'm Anjali!
 
 CS Student @ NMIMS MPSTME  
-Cybersecurity | 
 
 ---
 
