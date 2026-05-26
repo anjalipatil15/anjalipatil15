@@ -169,7 +169,7 @@ export const portfolioData = {
     },
     {
       name: "Full Stack Development",
-      image:"/image/",
+      image:"/images/nmims.png",
       issuer: "NMIMS",
       focus: "Frontend, backend, databases, system design and deployment"
     }
