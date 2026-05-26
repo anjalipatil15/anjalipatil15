@@ -1,0 +1,113 @@
+---
+import SectionHeader from './SectionHeader.astro'
+const { projects } = Astro.props
+---
+
+<section id="projects" class="section" aria-labelledby="projects-heading">
+  <div class="max-w-5xl mx-auto px-6">
+    <SectionHeader label="Case Files" heading="Projects" />
+
+    <div class="grid md:grid-cols-2 gap-5">
+      {projects.map((p: {
+        id: number
+        name: string
+        tagline: string
+        keyFeatures: string[]
+        technologies: string[]
+        demonstrates: string
+        github: string
+        details: string
+      }) => (
+        <article class="ap-card flex flex-col" data-project>
+
+          <!-- Header -->
+          <div class="p-5 pb-4">
+            <!-- ID + GitHub -->
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-mono text-[10px] text-slate-600 tracking-widest">
+                PRJ-00{p.id}
+              </span>
+              <a
+                href={p.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="font-mono text-[10px] text-slate-500 hover:text-cyan-400 transition-colors flex items-center gap-1"
+                aria-label={`GitHub — ${p.name}`}
+              >
+                GitHub ↗
+              </a>
+            </div>
+
+            <!-- Name -->
+            <h3 class="font-display font-bold text-slate-100 text-base leading-snug mb-2">
+              {p.name}
+            </h3>
+
+            <!-- Tagline -->
+            <p class="text-slate-400 text-sm leading-relaxed">{p.tagline}</p>
+          </div>
+
+          <!-- Key features -->
+          <div class="px-5 pb-4">
+            <ul class="space-y-1.5">
+              {p.keyFeatures.map((f: string) => (
+                <li class="flex items-start gap-2 text-[13px] text-slate-400">
+                  <span class="text-cyan-600 mt-0.5 flex-shrink-0">›</span>
+                  <span>{f}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- Tech tags -->
+          <div class="px-5 pb-4 flex flex-wrap gap-1.5">
+            {p.technologies.map((t: string) => (
+              <span class="tag">{t}</span>
+            ))}
+          </div>
+
+          <!-- Demonstrates -->
+          <div class="px-5 pb-4">
+            <p class="font-mono text-[10px] text-slate-600 tracking-widest uppercase mb-1.5">Demonstrates</p>
+            <p class="text-slate-500 text-[12px] leading-relaxed">{p.demonstrates}</p>
+          </div>
+
+          <!-- Toggle details -->
+          <div class="mt-auto border-t border-[#1e2533]">
+            <button
+              class="details-toggle w-full flex items-center justify-between px-5 py-3 font-mono text-[11px] text-slate-500 hover:text-cyan-400 transition-colors"
+              aria-expanded="false"
+            >
+              <span class="toggle-label">Show details</span>
+              <svg class="toggle-icon transition-transform duration-300 flex-shrink-0" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+
+            <div class="details-panel hidden px-5 pb-5">
+              <div class="bg-[#06080d] border border-[#1e2533] rounded-lg p-4">
+                <p class="text-slate-400 text-[13px] leading-relaxed">{p.details}</p>
+              </div>
+            </div>
+          </div>
+
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.details-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const card   = btn.closest('[data-project]')
+      const panel  = card?.querySelector('.details-panel')
+      const icon   = btn.querySelector('.toggle-icon') as HTMLElement
+      const label  = btn.querySelector('.toggle-label')
+      const isOpen = btn.getAttribute('aria-expanded') === 'true'
+
+      panel?.classList.toggle('hidden', isOpen)
+      btn.setAttribute('aria-expanded', String(!isOpen))
+      if (icon) icon.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)'
+      if (label) label.textContent = isOpen ? 'Show details' : 'Hide details'
+    })
+  })
+</script>

@@ -1,0 +1,119 @@
+---
+const navItems = [
+  { label: 'About',       href: '#about'       },
+  { label: 'Projects',    href: '#projects'    },
+  { label: 'Experience',  href: '#experiences' },
+  { label: 'Activities',  href: '#activities'  },
+  { label: 'Contact',     href: '#contact'     },
+]
+---
+
+<header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+  <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
+
+    <!-- Logo -->
+    <a
+      href="#"
+      class="font-display font-bold text-slate-100 text-base tracking-tight hover:text-cyan-400 transition-colors"
+      onclick="window.scrollTo({top:0,behavior:'smooth'});return false;"
+    >
+      AP<span class="text-cyan-400">.</span>
+    </a>
+
+    <!-- Desktop nav -->
+    <nav class="hidden md:flex items-center gap-1" aria-label="Main navigation">
+      {navItems.map(({ label, href }) => (
+        <a
+          href={href}
+          data-nav
+          class="nav-link font-mono text-[11px] tracking-widest uppercase px-3 py-1.5 rounded transition-all duration-200 text-slate-500 hover:text-slate-200"
+        >
+          {label}
+        </a>
+      ))}
+    </nav>
+
+    <!-- Mobile hamburger -->
+    <button
+      id="mobile-toggle"
+      class="md:hidden text-slate-400 hover:text-slate-200 transition-colors p-1"
+      aria-label="Open menu"
+      aria-expanded="false"
+    >
+      <svg id="icon-open"  width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6"  x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <svg id="icon-close" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="hidden"><line x1="18" y1="6"  x2="6" y2="18"/><line x1="6"  y1="6"  x2="18" y2="18"/></svg>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden fixed inset-0 top-14 z-40 flex flex-col gap-2 px-6 pt-8"
+    style="background:rgba(8,11,16,0.98);backdrop-filter:blur(16px);"
+  >
+    {navItems.map(({ label, href }) => (
+      <a
+        href={href}
+        data-mobile-nav
+        class="font-display text-2xl font-bold text-slate-300 hover:text-cyan-400 transition-colors py-2 border-b border-[#1e2533]"
+      >
+        {label}
+      </a>
+    ))}
+  </div>
+</header>
+
+<script>
+  // ── Scroll: add backdrop when not at top ──
+  const navbar = document.getElementById('navbar')
+  window.addEventListener('scroll', () => {
+    navbar?.classList.toggle('nav-scrolled', window.scrollY > 40)
+  }, { passive: true })
+
+  // ── Mobile toggle ──
+  const toggle   = document.getElementById('mobile-toggle')
+  const menu     = document.getElementById('mobile-menu')
+  const iconOpen  = document.getElementById('icon-open')
+  const iconClose = document.getElementById('icon-close')
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = !menu?.classList.contains('hidden')
+    menu?.classList.toggle('hidden', isOpen)
+    iconOpen?.classList.toggle('hidden',  !isOpen)
+    iconClose?.classList.toggle('hidden',  isOpen)
+    toggle?.setAttribute('aria-expanded', String(!isOpen))
+  })
+
+  // Close mobile menu on link click
+  document.querySelectorAll('[data-mobile-nav]').forEach(link => {
+    link.addEventListener('click', () => {
+      menu?.classList.add('hidden')
+      iconOpen?.classList.remove('hidden')
+      iconClose?.classList.add('hidden')
+    })
+  })
+
+  // ── Scroll spy: highlight active nav link ──
+  const sections  = ['about','projects','experiences','activities','contact']
+  const navLinks  = document.querySelectorAll('[data-nav]')
+
+  const setActive = (id: string) => {
+    navLinks.forEach(link => {
+      const match = (link as HTMLAnchorElement).getAttribute('href') === `#${id}`
+      link.classList.toggle('text-cyan-400',   match)
+      link.classList.toggle('bg-cyan-950/40',  match)
+      link.classList.toggle('text-slate-500', !match)
+    })
+  }
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) setActive(entry.target.id)
+    })
+  }, { rootMargin: '-40% 0px -55% 0px' })
+
+  sections.forEach(id => {
+    const el = document.getElementById(id)
+    if (el) observer.observe(el)
+  })
+</script>

@@ -1,0 +1,58 @@
+---
+import Layout    from '../layout/Layout.astro'
+import Navbar    from '../components/Navbar.astro'
+import Hero      from '../components/Hero.astro'
+import About     from '../components/About.astro'
+import Projects  from '../components/Projects.astro'
+import Experiences from '../components/Experiences.astro'
+import Activities  from '../components/Activities.astro'
+import Contact   from '../components/Contact.astro'
+
+import { portfolioData } from '../data/portfolioData.js'
+
+const { personal, Projects: projects, experiences, activities, certifications } = portfolioData
+---
+
+<Layout
+  title="Anjali Patil — Cybersecurity & Engineering"
+  description="B.Tech Computer Engineering student at NMIMS Mumbai. Building at the intersection of cybersecurity, machine learning, and threat intelligence."
+>
+  <Navbar />
+  <main>
+    <Hero     personal={personal} />
+    <About    personal={personal} certifications={certifications} />
+    <Projects projects={projects} />
+    <Experiences experiences={experiences} />
+    <Activities  activities={activities} />
+    <Contact  personal={personal} />
+  </main>
+</Layout>
+---
+import Layout    from '../layout/Layout.astro'
+import Navbar    from '../components/Navbar.astro'
+import Hero      from '../components/Hero.astro'
+import About     from '../components/About.astro'
+import Projects  from '../components/Projects.astro'
+import Experiences from '../components/Experiences.astro'
+import Activities  from '../components/Activities.astro'
+import Contact   from '../components/Contact.astro'
+
+import { portfolioData } from '../data/portfolioData.js'
+
+
+---
+
+<Layout
+  title="Anjali Patil — Cybersecurity & Engineering"
+  description="B.Tech Computer Engineering student at NMIMS Mumbai. Building at the intersection of cybersecurity, machine learning, and threat intelligence."
+>
+  <Navbar />
+  <main>
+    <Hero     personal={personal} />
+    <About    personal={personal} certifications={certifications} />
+    <Projects projects={projects} />
+    <Experiences experiences={experiences} />
+    <Activities  activities={activities} />
+    <Contact  personal={personal} />
+  </main>
+</Layout>
