@@ -1,67 +1,55 @@
 ---
-import SectionHeader from './SectionHeader.astro'
 const { activities } = Astro.props
 ---
 
-<section id="activities" class="section" aria-labelledby="activities-heading">
-  <div class="max-w-5xl mx-auto px-6">
-    <SectionHeader label="Beyond Projects" heading="Activities" />
+<section id="activities" class="section" aria-labelledby="act-heading">
+  <p class="section-label" id="act-heading">Activities</p>
 
-    <div class="grid md:grid-cols-3 gap-5">
-      {activities.map((act: {
-        title: string
-        type: string
-        description: string
-        items: string[]
-        link: string
-      }) => (
-        <article class="ap-card flex flex-col p-5 gap-4">
-
-          <!-- Header -->
-          <div class="flex items-start justify-between gap-3">
-            <div>
-              <h3 class="font-display font-bold text-slate-100 text-base leading-snug">{act.title}</h3>
-              <span class="badge-cyan mt-2 inline-block">{act.type}</span>
+  <div class="space-y-4">
+    {activities.map((act: {
+      title: string
+      type: string
+      description: string
+      items: string[]
+      link: string
+    }) => (
+      <article class="card p-5 group">
+        <!-- Header -->
+        <div class="flex items-start justify-between gap-4 mb-3">
+          <div>
+            <div class="flex items-center gap-2 mb-1">
+              {act.link !== '#' ? (
+                <a
+                  href={act.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="ext-link text-sm font-semibold"
+                  style="color:#ccd6f6;"
+                >
+                  {act.title}
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </a>
+              ) : (
+                <h3 class="text-sm font-semibold" style="color:#ccd6f6;">{act.title}</h3>
+              )}
             </div>
-            {act.link !== '#' && (
-              <a
-                href={act.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-slate-600 hover:text-cyan-400 transition-colors flex-shrink-0 mt-0.5"
-                aria-label={`Visit ${act.title}`}
-              >
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              </a>
-            )}
+            <span class="tag text-xs">{act.type}</span>
           </div>
+        </div>
 
-          <!-- Description -->
-          <p class="text-slate-400 text-[13px] leading-relaxed">{act.description}</p>
+        <!-- Description -->
+        <p class="text-sm leading-relaxed mb-3" style="color:#8892b0;">{act.description}</p>
 
-          <!-- Items -->
-          <ul class="space-y-1.5 mt-auto">
-            {act.items.map((item: string) => (
-              <li class="flex items-start gap-2 text-[12px] text-slate-500">
-                <span class="text-cyan-700 mt-0.5 flex-shrink-0">›</span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-
-          <!-- Link footer -->
-          {act.link !== '#' && (
-            <a
-              href={act.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="link-arrow mt-2 text-[11px]"
-            >
-              View {act.title}
-            </a>
-          )}
-        </article>
-      ))}
-    </div>
+        <!-- Items -->
+        <ul class="space-y-1.5">
+          {act.items.map((item: string) => (
+            <li class="flex items-start gap-2 text-xs leading-relaxed" style="color:#8892b0;">
+              <span class="flex-shrink-0 mt-0.5" style="color:#64ffda;">▹</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </article>
+    ))}
   </div>
 </section>

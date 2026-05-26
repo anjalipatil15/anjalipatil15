@@ -1,58 +1,102 @@
 ---
-import Layout    from '../layout/Layout.astro'
-import Navbar    from '../components/Navbar.astro'
-import Hero      from '../components/Hero.astro'
-import About     from '../components/About.astro'
-import Projects  from '../components/Projects.astro'
-import Experiences from '../components/Experiences.astro'
-import Activities  from '../components/Activities.astro'
-import Contact   from '../components/Contact.astro'
-
+import Layout       from '../layout/Layout.astro'
+import Sidebar      from '../components/Sidebar.astro'
+import About        from '../components/About.astro'
+import Projects     from '../components/Projects.astro'
+import Experiences  from '../components/Experiences.astro'
+import Activities   from '../components/Activities.astro'
+import Contact      from '../components/Contact.astro'
 import { portfolioData } from '../data/portfolioData.js'
 
 const { personal, Projects: projects, experiences, activities, certifications } = portfolioData
 ---
 
-<Layout
-  title="Anjali Patil — Cybersecurity & Engineering"
-  description="B.Tech Computer Engineering student at NMIMS Mumbai. Building at the intersection of cybersecurity, machine learning, and threat intelligence."
->
-  <Navbar />
-  <main>
-    <Hero     personal={personal} />
-    <About    personal={personal} certifications={certifications} />
-    <Projects projects={projects} />
-    <Experiences experiences={experiences} />
-    <Activities  activities={activities} />
-    <Contact  personal={personal} />
-  </main>
+<Layout>
+  <!-- Mobile nav bar (shown only on small screens) -->
+  <header id="mobile-nav" class="fixed top-0 left-0 right-0 z-50 md:hidden transition-all duration-300 py-4 px-6 flex items-center justify-between">
+    <span class="font-mono text-teal text-sm font-semibold tracking-widest">AP.</span>
+    <button id="mobile-toggle" class="text-slate-l hover:text-teal transition-colors p-1" aria-label="Open menu">
+      <svg id="icon-open"  width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <svg id="icon-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="hidden"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </header>
+
+  <!-- Mobile fullscreen menu -->
+  <div id="mobile-menu" class="hidden fixed inset-0 z-40 flex flex-col justify-center px-10 gap-6 md:hidden"
+    style="background:rgba(15,23,42,0.98);backdrop-filter:blur(16px);">
+    {['about','projects','experiences','activities','contact'].map(id => (
+      <a href={`#${id}`} data-mobile-link
+        class="font-mono text-2xl font-semibold text-slate-w hover:text-teal transition-colors capitalize tracking-widest border-b border-white/5 pb-4">
+        {id}
+      </a>
+    ))}
+  </div>
+
+  <!-- Two-column layout -->
+  <div class="layout">
+    <Sidebar personal={personal} />
+    <main class="main-content">
+      <About        personal={personal} certifications={certifications} />
+      <Projects     projects={projects} />
+      <Experiences  experiences={experiences} />
+      <Activities   activities={activities} />
+      <Contact      personal={personal} />
+      <!-- Footer inside main -->
+      <footer class="pt-8 mt-8 border-t border-white/5">
+        <p class="font-mono text-xs text-slate/50 leading-relaxed">
+          Designed with inspiration from
+          <a href="https://brittanychiang.com" target="_blank" rel="noopener noreferrer" class="text-slate hover:text-teal transition-colors"> Brittany Chiang</a>.
+          Built with Astro + Tailwind CSS, deployed on Vercel.
+        </p>
+      </footer>
+    </main>
+  </div>
 </Layout>
----
-import Layout    from '../layout/Layout.astro'
-import Navbar    from '../components/Navbar.astro'
-import Hero      from '../components/Hero.astro'
-import About     from '../components/About.astro'
-import Projects  from '../components/Projects.astro'
-import Experiences from '../components/Experiences.astro'
-import Activities  from '../components/Activities.astro'
-import Contact   from '../components/Contact.astro'
 
-import { portfolioData } from '../data/portfolioData.js'
+<script>
+  // Mobile menu toggle
+  const toggle    = document.getElementById('mobile-toggle')
+  const menu      = document.getElementById('mobile-menu')
+  const iconOpen  = document.getElementById('icon-open')
+  const iconClose = document.getElementById('icon-close')
+  const mobileNav = document.getElementById('mobile-nav')
 
+  window.addEventListener('scroll', () => {
+    mobileNav?.classList.toggle('nav-scrolled', window.scrollY > 20)
+  }, { passive: true })
 
----
+  toggle?.addEventListener('click', () => {
+    const isOpen = !menu?.classList.contains('hidden')
+    menu?.classList.toggle('hidden', isOpen)
+    iconOpen?.classList.toggle('hidden', !isOpen)
+    iconClose?.classList.toggle('hidden', isOpen)
+  })
 
-<Layout
-  title="Anjali Patil — Cybersecurity & Engineering"
-  description="B.Tech Computer Engineering student at NMIMS Mumbai. Building at the intersection of cybersecurity, machine learning, and threat intelligence."
->
-  <Navbar />
-  <main>
-    <Hero     personal={personal} />
-    <About    personal={personal} certifications={certifications} />
-    <Projects projects={projects} />
-    <Experiences experiences={experiences} />
-    <Activities  activities={activities} />
-    <Contact  personal={personal} />
-  </main>
-</Layout>
+  document.querySelectorAll('[data-mobile-link]').forEach(link => {
+    link.addEventListener('click', () => {
+      menu?.classList.add('hidden')
+      iconOpen?.classList.remove('hidden')
+      iconClose?.classList.add('hidden')
+    })
+  })
+
+  // Scroll spy — updates sidebar nav active state
+  const sections = ['about','projects','experiences','activities','contact']
+  const navLinks = document.querySelectorAll('[data-nav-link]')
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(link => {
+          const match = link.getAttribute('data-section') === entry.target.id
+          link.classList.toggle('active', match)
+        })
+      }
+    })
+  }, { rootMargin: '-20% 0px -70% 0px' })
+
+  sections.forEach(id => {
+    const el = document.getElementById(id)
+    if (el) observer.observe(el)
+  })
+</script>

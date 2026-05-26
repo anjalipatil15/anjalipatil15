@@ -1,95 +1,50 @@
 ---
-import SectionHeader from './SectionHeader.astro'
 const { personal } = Astro.props
-
-const channels = [
-  {
-    label: 'Email',
-    value: personal.email,
-    href:  `mailto:${personal.email}`,
-    desc:  'Best for internship inquiries and project discussions.',
-    external: false,
-  },
-  {
-    label: 'GitHub',
-    value: 'anjalipatil15',
-    href:  personal.github,
-    desc:  'Source code, projects, and research repositories.',
-    external: true,
-  },
-  {
-    label: 'LinkedIn',
-    value: 'anjalipatil15',
-    href:  personal.linkedin,
-    desc:  'Professional background and updates.',
-    external: true,
-  },
-  {
-    label: 'Medium',
-    value: '@anjalipatil.dev',
-    href:  personal.medium,
-    desc:  'Writing on cybersecurity, OSINT, and technical learning.',
-    external: true,
-  },
-]
 ---
 
-<section id="contact" class="section grid-bg" aria-labelledby="contact-heading">
-  <div class="max-w-5xl mx-auto px-6">
-    <SectionHeader label="Open Channels" heading="Contact" />
+<section id="contact" class="section" aria-labelledby="contact-heading">
+  <p class="section-label" id="contact-heading">Contact</p>
 
-    <div class="grid md:grid-cols-5 gap-10 items-start">
+  <div class="mb-8 max-w-md">
+    <p class="text-sm leading-relaxed mb-3" style="color:#a8b2d8;">
+      Open to internships, research collaborations, and conversations about
+      cybersecurity, ML, and building interesting things.
+    </p>
+    <p class="text-sm leading-relaxed" style="color:#8892b0;">
+      The best way to reach me is by email. I'm also on LinkedIn and post
+      technical write-ups on Medium.
+    </p>
+  </div>
 
-      <!-- Left: intro -->
-      <div class="md:col-span-2">
-        <p class="text-slate-300 leading-relaxed text-[15px] mb-4">
-          Open to internships, research collaborations, and conversations about
-          security, ML, and building interesting things.
-        </p>
-        <p class="text-slate-500 text-sm leading-relaxed">
-          The best way to reach me is via email. I also post regularly on Medium and
-          maintain active repos on GitHub.
-        </p>
+  <!-- Primary CTA -->
+  <a
+    href={`mailto:${personal.email}`}
+    class="inline-flex items-center gap-2.5 font-mono text-sm font-medium px-6 py-3 rounded border transition-all duration-200 mb-8"
+    style="border-color:#64ffda; color:#64ffda;"
+    onmouseover="this.style.background='rgba(100,255,218,0.08)'"
+    onmouseout="this.style.background='transparent'"
+  >
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    Say Hello
+  </a>
 
-        <!-- Primary CTA -->
-        <a
-          href={`mailto:${personal.email}`}
-          class="inline-flex items-center gap-2 mt-6 font-mono text-sm font-semibold px-5 py-3 rounded-lg transition-all duration-200"
-          style="background:#0891b2;color:#fff;box-shadow:0 4px 20px rgba(6,182,212,0.2);"
-          onmouseover="this.style.background='#06b6d4'"
-          onmouseout="this.style.background='#0891b2'"
-        >
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          Send an Email
-        </a>
-      </div>
-
-      <!-- Right: channel cards -->
-      <div class="md:col-span-3 grid sm:grid-cols-2 gap-3">
-        {channels.map(ch => (
-          <a
-            href={ch.href}
-            target={ch.external ? '_blank' : '_self'}
-            rel={ch.external ? 'noopener noreferrer' : undefined}
-            class="ap-card block p-4 group"
-          >
-            <div class="flex items-center justify-between mb-2">
-              <span class="font-mono text-[10px] text-slate-600 tracking-widest uppercase">{ch.label}</span>
-              <svg class="text-slate-600 group-hover:text-cyan-400 transition-colors" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            </div>
-            <p class="text-slate-200 text-sm font-medium mb-1 group-hover:text-cyan-300 transition-colors truncate">{ch.value}</p>
-            <p class="text-slate-500 text-[12px] leading-relaxed">{ch.desc}</p>
-          </a>
-        ))}
-      </div>
-    </div>
+  <!-- Other channels -->
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+    {[
+      { label: 'GitHub',   href: personal.github,   desc: 'Source & projects' },
+      { label: 'LinkedIn', href: personal.linkedin,  desc: 'Professional profile' },
+      { label: 'Medium',   href: personal.medium,    desc: 'Writing & notes' },
+    ].map(ch => (
+      <a
+        href={ch.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="card p-4 block group"
+      >
+        <p class="text-sm font-medium mb-1 group-hover:text-teal transition-colors" style="color:#ccd6f6;">{ch.label}</p>
+        <p class="text-xs" style="color:#8892b0;">{ch.desc}</p>
+        <p class="font-mono text-xs mt-2 group-hover:text-teal transition-colors" style="color:#64ffda; opacity:0.5;">↗ Visit</p>
+      </a>
+    ))}
   </div>
 </section>
-
-<!-- Footer -->
-<footer class="border-t border-[#1a2030] py-6 px-6" style="background:#080b10;">
-  <div class="max-w-5xl mx-auto flex flex-wrap items-center justify-between gap-3">
-    <span class="font-mono text-[11px] text-slate-700">ANJALI PATIL // 2025</span>
-    <span class="font-mono text-[11px] text-slate-700">Built with Astro + Tailwind</span>
-  </div>
-</footer>

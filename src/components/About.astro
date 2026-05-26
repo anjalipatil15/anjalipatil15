@@ -1,52 +1,44 @@
 ---
-import SectionHeader from './SectionHeader.astro'
 const { personal, certifications } = Astro.props
 ---
 
 <section id="about" class="section" aria-labelledby="about-heading">
-  <div class="max-w-5xl mx-auto px-6">
-    <SectionHeader label="Who I Am" heading="About" />
+  <p class="section-label" id="about-heading">About</p>
 
-    <div class="grid md:grid-cols-5 gap-10">
+  <div class="space-y-4 mb-10">
+    <p class="text-sm leading-relaxed" style="color:#a8b2d8;">
+      I'm a Computer Engineering student at <span style="color:#64ffda;">NMIMS Mumbai</span> with a focus on
+      cybersecurity, OSINT, threat intelligence, and practical ML. I'm drawn to the
+      problem of understanding how systems fail — whether through network intrusions,
+      software vulnerabilities, or adversarial attacks on detection models.
+    </p>
+    <p class="text-sm leading-relaxed" style="color:#8892b0;">
+      {personal.roleStatement}
+    </p>
+    <p class="text-sm leading-relaxed" style="color:#8892b0;">
+      Outside coursework I practice on Hack The Box, run threat intelligence pipelines
+      using live honeypot data, and write about what I'm learning on Medium. I'm
+      currently exploring digital forensics workflows and adversarial ML in intrusion
+      detection.
+    </p>
+  </div>
 
-      <!-- Left: intro text -->
-      <div class="md:col-span-3 space-y-4">
-        <p class="text-slate-300 leading-relaxed text-[15px]">
-          I'm a Computer Engineering student at NMIMS Mumbai with a focus on cybersecurity,
-          OSINT, and practical systems. I'm interested in how attackers think, how
-          defenses fail, and how machine learning can sharpen both detection and analysis.
-        </p>
-        <p class="text-slate-400 leading-relaxed text-[15px]">
-          {personal.roleStatement}
-        </p>
-        <p class="text-slate-400 leading-relaxed text-[15px]">
-          Outside coursework, I work on threat intelligence pipelines, practice on Hack The Box,
-          and write about what I'm learning on Medium. I'm currently exploring digital forensics,
-          OSINT workflows, and adversarial ML in intrusion detection.
-        </p>
-
-        <!-- Quick links -->
-        <div class="flex flex-wrap gap-3 pt-2">
-          <a href={personal.github}   target="_blank" rel="noopener noreferrer" class="link-arrow">GitHub</a>
-          <a href={personal.linkedin} target="_blank" rel="noopener noreferrer" class="link-arrow">LinkedIn</a>
-          <a href={personal.medium}   target="_blank" rel="noopener noreferrer" class="link-arrow">Medium</a>
-          <a href={`mailto:${personal.email}`} class="link-arrow">{personal.email}</a>
+  <!-- Certifications -->
+  <p class="font-mono text-xs tracking-widest uppercase mb-4" style="color:#64ffda; opacity:0.6;">
+    Certifications
+  </p>
+  <div class="space-y-3">
+    {certifications.map((cert: { name: string; issuer: string; focus: string }) => (
+      <div class="card p-4 flex items-start gap-4">
+        <div class="flex-shrink-0 mt-0.5">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64ffda" stroke-width="2" stroke-linecap="round" opacity="0.7"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div>
+          <p class="text-sm font-medium" style="color:#ccd6f6;">{cert.name}</p>
+          <p class="font-mono text-xs mt-0.5" style="color:#64ffda; opacity:0.6;">{cert.issuer}</p>
+          <p class="text-xs mt-1 leading-relaxed" style="color:#8892b0;">{cert.focus}</p>
         </div>
       </div>
-
-      <!-- Right: certifications -->
-      <div class="md:col-span-2">
-        <p class="font-mono text-[11px] text-slate-500 tracking-widest uppercase mb-4">Certifications</p>
-        <div class="space-y-3">
-          {certifications.map((cert: { name: string; issuer: string; focus: string }) => (
-            <div class="ap-card p-4">
-              <p class="text-slate-200 text-sm font-medium">{cert.name}</p>
-              <p class="font-mono text-[11px] text-cyan-700 mt-1">{cert.issuer}</p>
-              <p class="text-slate-500 text-xs mt-1.5 leading-relaxed">{cert.focus}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
+    ))}
   </div>
 </section>
