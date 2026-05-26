@@ -5,78 +5,89 @@ const { projects } = Astro.props
 <section id="projects" class="section" aria-labelledby="projects-heading">
   <p class="section-label" id="projects-heading">Projects</p>
 
-  <div class="space-y-4">
+  <div class="space-y-6">
     {projects.map((p: {
       id: number
       name: string
       tagline: string
       keyFeatures: string[]
       technologies: string[]
-      demonstrates: string
       github: string
-      details: string
+      image?: string
     }) => (
-      <article class="card p-5 group cursor-pointer" data-project>
+      <article class="proj-card group">
 
-        <!-- Top row: ID + GitHub -->
-        <div class="flex items-center justify-between mb-3">
-          <span class="font-mono text-xs" style="color:#64ffda; opacity:0.45;">00{p.id}</span>
-          <a
-            href={p.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="ext-link font-mono text-xs opacity-60 hover:opacity-100"
-            onclick="event.stopPropagation()"
-            aria-label={`GitHub — ${p.name}`}
+        <div class="proj-thumb">
+          {p.image ? (
+            <a
+              href={p.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Open GitHub repository for ${p.name}`}
+              class="proj-image-link"
+            >
+              <img
+                src={p.image}
+                alt={p.name}
+                width="240"
+                height="140"
+                loading="lazy"
+                class="proj-image"
+              />
+            </a>
+          ) : (
+            <div class="proj-placeholder">
+              <span class="font-mono text-xs" style="color:#64ffda; opacity:0.3;">
+                00{p.id}
+              </span>
+            </div>
+          )}
+        </div>
+
+        <div class="proj-content">
+          <div class="flex items-center justify-between mb-2">
+            <span class="font-mono text-xs" style="color:#64ffda; opacity:0.45;">
+              00{p.id}
+            </span>
+
+            <a
+              href={p.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="github-btn"
+              aria-label={`GitHub — ${p.name}`}
+            >
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+              </svg>
+              GitHub ↗
+            </a>
+          </div>
+
+          <h3
+            class="text-base font-semibold mb-1 transition-colors group-hover:text-teal leading-snug"
+            style="color:#ccd6f6;"
           >
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
-            </svg>
-            GitHub
-          </a>
-        </div>
+            {p.name}
+          </h3>
 
-        <!-- Name -->
-        <h3 class="text-base font-semibold mb-1 transition-colors group-hover:text-teal" style="color:#ccd6f6;">
-          {p.name}
-        </h3>
+          <p class="text-sm leading-relaxed mb-3" style="color:#8892b0;">
+            {p.tagline}
+          </p>
 
-        <!-- Tagline -->
-        <p class="text-sm mb-4 leading-relaxed" style="color:#8892b0;">{p.tagline}</p>
+          <ul class="space-y-1 mb-4">
+            {p.keyFeatures.slice(0, 3).map((f: string) => (
+              <li class="flex items-start gap-2 text-xs leading-relaxed" style="color:#8892b0;">
+                <span class="flex-shrink-0 mt-0.5" style="color:#64ffda;">▹</span>
+                {f}
+              </li>
+            ))}
+          </ul>
 
-        <!-- Key features -->
-        <ul class="space-y-1.5 mb-4">
-          {p.keyFeatures.map((f: string) => (
-            <li class="flex items-start gap-2 text-xs leading-relaxed" style="color:#8892b0;">
-              <span class="flex-shrink-0 mt-0.5" style="color:#64ffda;">▹</span>
-              {f}
-            </li>
-          ))}
-        </ul>
-
-        <!-- Tech tags -->
-        <div class="flex flex-wrap gap-1.5 mb-4">
-          {p.technologies.map((t: string) => (
-            <span class="tag">{t}</span>
-          ))}
-        </div>
-
-        <!-- Toggle details -->
-        <button
-          class="details-toggle flex items-center gap-2 font-mono text-xs transition-colors w-full text-left"
-          style="color:#8892b0;"
-          aria-expanded="false"
-        >
-          <svg class="toggle-chevron transition-transform duration-300 flex-shrink-0" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-          <span class="toggle-text">Show details</span>
-        </button>
-
-        <div class="details-panel mt-3">
-          <div class="border-t pt-3 mt-1" style="border-color:rgba(100,255,218,0.08);">
-            <p class="font-mono text-xs mb-1.5 uppercase tracking-widest" style="color:#64ffda; opacity:0.5;">What it demonstrates</p>
-            <p class="text-xs leading-relaxed mb-3" style="color:#8892b0;">{p.demonstrates}</p>
-            <p class="font-mono text-xs mb-1.5 uppercase tracking-widest" style="color:#64ffda; opacity:0.5;">Details</p>
-            <p class="text-xs leading-relaxed" style="color:#8892b0;">{p.details}</p>
+          <div class="flex flex-wrap gap-1.5">
+            {p.technologies.map((t: string) => (
+              <span class="tag">{t}</span>
+            ))}
           </div>
         </div>
 
@@ -85,19 +96,100 @@ const { projects } = Astro.props
   </div>
 </section>
 
-<script>
-  document.querySelectorAll('[data-project]').forEach(card => {
-    const btn     = card.querySelector('.details-toggle')
-    const panel   = card.querySelector('.details-panel') as HTMLElement
-    const chevron = card.querySelector('.toggle-chevron') as HTMLElement
-    const text    = card.querySelector('.toggle-text')
+<style>
+  .proj-card {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    background: transparent;
+    transition: all 0.25s ease;
+    align-items: flex-start;
+  }
 
-    btn?.addEventListener('click', () => {
-      const isOpen = btn.getAttribute('aria-expanded') === 'true'
-      btn.setAttribute('aria-expanded', String(!isOpen))
-      panel?.classList.toggle('open', !isOpen)
-      if (chevron) chevron.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)'
-      if (text) text.textContent = isOpen ? 'Show details' : 'Hide details'
-    })
-  })
-</script>
+  .proj-card:hover {
+    background: #1e293b;
+    border-color: rgba(100, 255, 218, 0.1);
+    box-shadow: 0 8px 32px rgba(2, 12, 27, 0.5);
+    transform: translateY(-2px);
+  }
+
+  .proj-thumb {
+    flex-shrink: 0;
+    width: 190px;
+    height: 120px;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(100, 255, 218, 0.03);
+  }
+
+  .proj-image-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .proj-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+
+  .proj-image-link:hover .proj-image {
+    transform: scale(1.04);
+    opacity: 0.92;
+  }
+
+  .proj-placeholder {
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(100, 255, 218, 0.04);
+    border: 1px solid rgba(100, 255, 218, 0.08);
+  }
+
+  .proj-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .github-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    color: #64ffda;
+    padding: 3px 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(100, 255, 218, 0.25);
+    background: rgba(100, 255, 218, 0.05);
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .github-btn:hover {
+    background: rgba(100, 255, 218, 0.12);
+    border-color: rgba(100, 255, 218, 0.5);
+  }
+
+  @media (max-width: 600px) {
+    .proj-card {
+      flex-direction: column;
+    }
+
+    .proj-thumb {
+      width: 100%;
+      height: 180px;
+    }
+  }
+</style>

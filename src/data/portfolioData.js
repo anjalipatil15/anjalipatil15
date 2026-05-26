@@ -13,6 +13,7 @@ export const portfolioData = {
   Projects: [
     {
       id: 1,
+      image:"/images/ids.png",
       name: "ML-Based Intrusion Detection System",
       tagline: "Real-time attack detection using dual-stage XGBoost classifier",
       keyFeatures: [
@@ -27,6 +28,7 @@ export const portfolioData = {
     },
     {
       id: 2,
+      image: "/images/threat-intel1.jpeg",
       name: "Honeypot-Based Threat Intelligence System",
       tagline: "Capture real-world attack data and extract IOCs from attacker behavior",
       keyFeatures: [
@@ -41,6 +43,7 @@ export const portfolioData = {
     },
     {
       id: 3,
+      image:"/images/captcha.png",
       name: "CAPTCHA Recognition using Deep Learning",
       tagline: "CNN-based multi-output character classification for CAPTCHA solving",
       keyFeatures: [
@@ -55,6 +58,7 @@ export const portfolioData = {
     },
     {
       id: 4,
+      image:"/images/ios.jpeg",
       name: "iOS Jailbreaking Security Analysis",
       tagline: "Understanding iOS security architecture and privilege escalation chains",
       keyFeatures: [
@@ -153,16 +157,19 @@ export const portfolioData = {
   certifications: [
     {
       name: "Google Cybersecurity Certificate",
+      image:"/images/google.png",
       issuer: "Coursera",
       focus: "Foundational cybersecurity concepts, threat analysis, incident response"
     },
     {
       name: "Introduction to CIP",
+      image:"/images/opswat.jpeg",
       issuer: "OPSWAT Academy",
       focus: "Critical infrastructure protection and security best practices"
     },
     {
       name: "Full Stack Development",
+      image:"/image/",
       issuer: "NMIMS",
       focus: "Frontend, backend, databases, system design and deployment"
     }

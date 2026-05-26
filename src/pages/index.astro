@@ -1,7 +1,7 @@
 ---
 import Layout       from '../layout/Layout.astro'
 import Sidebar      from '../components/Sidebar.astro'
-import About        from '../components/About.astro'
+import Certifications from '../components/Certifications.astro'
 import Projects     from '../components/Projects.astro'
 import Experiences  from '../components/Experiences.astro'
 import Activities   from '../components/Activities.astro'
@@ -36,8 +36,8 @@ const { personal, Projects: projects, experiences, activities, certifications } 
   <div class="layout">
     <Sidebar personal={personal} />
     <main class="main-content">
-      <About        personal={personal} certifications={certifications} />
       <Projects     projects={projects} />
+      <Certifications certifications={certifications} />
       <Experiences  experiences={experiences} />
       <Activities   activities={activities} />
       <Contact      personal={personal} />
@@ -79,7 +79,7 @@ const { personal, Projects: projects, experiences, activities, certifications } 
   })
 
   // Scroll spy — updates sidebar nav active state
-  const sections = ['about','projects','experiences','activities','contact']
+  const sections = ['certifications','projects','experiences','activities','contact']
   const navLinks = document.querySelectorAll('[data-nav-link]')
 
   const observer = new IntersectionObserver(entries => {

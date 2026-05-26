@@ -5,26 +5,27 @@ const { experiences } = Astro.props
 <section id="experiences" class="section" aria-labelledby="exp-heading">
   <p class="section-label" id="exp-heading">Experience</p>
 
-  <div class="space-y-2">
+  <div class="space-y-3">
     {experiences.map((exp: {
       role: string
       organization: string
       period: string
       description: string
       points: string[]
-    }, i: number) => (
-      <article class="card p-5 group">
+    }) => (
+      <article class="exp-card group">
+
         <!-- Period -->
-        <p class="font-mono text-xs mb-3 tracking-widest" style="color:#64ffda; opacity:0.55;">
+        <p class="font-mono text-xs mb-3 tracking-widest" style="color:#64ffda; opacity:0.5;">
           {exp.period}
         </p>
 
         <!-- Role + org -->
-        <div class="flex flex-wrap items-baseline gap-x-2 mb-3">
-          <h3 class="text-sm font-semibold group-hover:text-teal transition-colors" style="color:#ccd6f6;">
+        <div class="flex flex-wrap items-baseline gap-x-2 mb-2">
+          <h3 class="text-sm font-semibold transition-colors group-hover:text-teal" style="color:#ccd6f6;">
             {exp.role}
           </h3>
-          <span class="text-sm" style="color:#64ffda; opacity:0.7;">·</span>
+          <span style="color:#64ffda; opacity:0.5;">·</span>
           <span class="text-sm" style="color:#8892b0;">{exp.organization}</span>
         </div>
 
@@ -40,7 +41,24 @@ const { experiences } = Astro.props
             </li>
           ))}
         </ul>
+
       </article>
     ))}
   </div>
 </section>
+
+<style>
+  .exp-card {
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    background: transparent;
+    transition: all 0.25s ease;
+  }
+  .exp-card:hover {
+    background: #1e293b;
+    border-color: rgba(100,255,218,0.1);
+    box-shadow: 0 8px 32px rgba(2,12,27,0.5);
+    transform: translateY(-2px);
+  }
+</style>
