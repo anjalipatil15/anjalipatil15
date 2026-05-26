@@ -13,7 +13,7 @@ const { personal, Projects: projects, experiences, activities, certifications } 
 
 <Layout>
   <!-- Mobile nav bar (shown only on small screens) -->
-  <header id="mobile-nav" class="fixed top-0 left-0 right-0 z-50 md:hidden transition-all duration-300 py-4 px-6 flex items-center justify-between">
+  <header id="mobile-nav" class="fixed top-0 left-0 right-0 z-50 md:hidden transition-all duration-300 py-4 px-6 flex items-center justify-between bg-[#0f172a]/95 backdrop-blur-md border-b border-white/5">
     <span class="font-mono text-teal text-sm font-semibold tracking-widest">AP.</span>
     <button id="mobile-toggle" class="text-slate-l hover:text-teal transition-colors p-1" aria-label="Open menu">
       <svg id="icon-open"  width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
@@ -24,7 +24,7 @@ const { personal, Projects: projects, experiences, activities, certifications } 
   <!-- Mobile fullscreen menu -->
   <div id="mobile-menu" class="hidden fixed inset-0 z-40 flex flex-col justify-center px-10 gap-6 md:hidden"
     style="background:rgba(15,23,42,0.98);backdrop-filter:blur(16px);">
-    {['about','projects','experiences','activities','contact'].map(id => (
+    {['projects','certifications','experiences','activities','contact'].map(id => (
       <a href={`#${id}`} data-mobile-link
         class="font-mono text-2xl font-semibold text-slate-w hover:text-teal transition-colors capitalize tracking-widest border-b border-white/5 pb-4">
         {id}
@@ -33,7 +33,7 @@ const { personal, Projects: projects, experiences, activities, certifications } 
   </div>
 
   <!-- Two-column layout -->
-  <div class="layout">
+  <div class="layout pt-20 md:pt-0">
     <Sidebar personal={personal} />
     <main class="main-content">
       <Projects     projects={projects} />
@@ -79,7 +79,7 @@ const { personal, Projects: projects, experiences, activities, certifications } 
   })
 
   // Scroll spy — updates sidebar nav active state
-  const sections = ['certifications','projects','experiences','activities','contact']
+  const sections = ['projects','certifications','experiences','activities','contact']
   const navLinks = document.querySelectorAll('[data-nav-link]')
 
   const observer = new IntersectionObserver(entries => {
@@ -98,3 +98,14 @@ const { personal, Projects: projects, experiences, activities, certifications } 
     if (el) observer.observe(el)
   })
 </script>
+<style>
+section {
+  scroll-margin-top: 90px;
+}
+
+@media (min-width: 768px) {
+  section {
+    scroll-margin-top: 32px;
+  }
+}
+</style>
