@@ -12,7 +12,29 @@ export const portfolioData = {
 
   Projects: [
     {
-      id: 1,
+  id: 1,
+  image: "/images/vuln_scan.png",
+  name: "Advanced Web Application Vulnerability Scanner",
+  tagline: "Automated web security assessment platform with vulnerability detection and reporting",
+  keyFeatures: [
+    "Website crawling and asset discovery",
+    "Security header and cookie security analysis",
+    "Automated XSS and SQL Injection detection",
+    "Risk scoring engine with consolidated PDF reporting"
+  ],
+  technologies: [
+    "Python",
+    "FastAPI",
+    "SQLAlchemy",
+    "SQLite",
+    "Jinja2",
+  ],
+  demonstrates: "Web application security, vulnerability assessment, secure coding practices, backend development, automated security testing",
+  github: "https://github.com/anjalipatil15/web-vuln-scanner",
+  details: "Developed a modular vulnerability scanner capable of discovering web assets, analyzing security configurations, and identifying common web vulnerabilities including Cross-Site Scripting (XSS) and SQL Injection (SQLi). Implemented automated risk scoring, scan management, and report generation through a FastAPI-based architecture."
+},
+    {
+      id: 2,
       image:"/images/ids.png",
       name: "ML-Based Intrusion Detection System",
       tagline: "Real-time attack detection using dual-stage XGBoost classifier",
@@ -27,7 +49,7 @@ export const portfolioData = {
       details: "Implemented feature engineering on network traffic data to improve detection accuracy. Used threshold tuning to balance precision and recall for operational deployment."
     },
     {
-      id: 2,
+      id: 3,
       image: "/images/threat-intel1.jpeg",
       name: "Honeypot-Based Threat Intelligence System",
       tagline: "Capture real-world attack data and extract IOCs from attacker behavior",
@@ -42,7 +64,7 @@ export const portfolioData = {
       details: "Parsed honeypot logs to identify attacker origins, common credentials used, and command patterns. Built automated reporting for threat intelligence dissemination."
     },
     {
-      id: 3,
+      id: 4,
       image:"/images/captcha.png",
       name: "CAPTCHA Recognition using Deep Learning",
       tagline: "CNN-based multi-output character classification for CAPTCHA solving",
@@ -57,7 +79,7 @@ export const portfolioData = {
       details: "Implemented image preprocessing (segmentation, normalization) and multi-output Dense layer for simultaneous character prediction."
     },
     {
-      id: 4,
+      id: 5,
       image:"/images/ios.jpeg",
       name: "iOS Jailbreaking Security Analysis",
       tagline: "Understanding iOS security architecture and privilege escalation chains",
@@ -70,10 +92,23 @@ export const portfolioData = {
       demonstrates: "Mobile security, kernel exploitation, privilege escalation, security architecture analysis",
       github: "https://github.com/anjalipatil15/iOS-Security-CaseStudy",
       details: "Studied iOS sandboxing, entitlements, and demonstrated concepts using Linux privilege escalation parallels."
-    }
+    },
+    
   ],
 
   experiences: [
+    {
+  role: "Network Security Intern",
+  organization: "The Cyber Ledger",
+  period: "May 2026 - July 2026",
+  description:
+    "Worked on network security and threat analysis projects using industry-standard security tools.",
+  points: [
+    "Analyzed network traffic and security events using Wireshark and Nmap",
+    "Performed vulnerability assessments with Burp Suite and Metasploit",
+    "Learned malware analysis, Zero Trust concepts, and security best practices like ISO 27001"
+  ]
+},
     {
       role: "Head of Tech Department",
       organization: "MUN Society, NMIMS MPSTME",
@@ -155,6 +190,18 @@ export const portfolioData = {
 ],
 
   certifications: [
+    {
+      name: "Certified Ethical Hacker (CEH)",
+      image:"/images/CEH.png",
+      issuer: "EC Council",
+      focus: "Hands-on exposure to penetration testing concepts, attack techniques, system security, and risk assessment."
+    },
+    {
+      name: "NMIMS Summer School for Cybersecurity and Forensics",
+      image:"/images/nmims.png",
+      issuer: "NMIMS ",
+      focus: "Practical exposure to cybersecurity and digital forensics workflows using tools such as Nmap, Wireshark, Burp Suite, Metasploit, and data recovery platforms."
+    },
     {
       name: "Google Cybersecurity Certificate",
       image:"/images/google.png",
