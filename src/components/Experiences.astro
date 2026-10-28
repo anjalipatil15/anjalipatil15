@@ -5,32 +5,28 @@ const { experiences } = Astro.props
 <section id="experiences" class="section" aria-labelledby="exp-heading">
   <p class="section-label" id="exp-heading">Experience</p>
 
-  <div class="space-y-3">
+  <div class="space-y-1">
     {experiences.map((exp: {
       role: string
       organization: string
       period: string
-      description: string
       points: string[]
     }) => (
       <article class="exp-card group">
 
-        <!-- Period -->
-        <p class="font-mono text-xs mb-3 tracking-widest" style="color:#64ffda; opacity:0.5;">
-          {exp.period}
-        </p>
-
-        <!-- Role + org -->
-        <div class="flex flex-wrap items-baseline gap-x-2 mb-2">
-          <h3 class="text-sm font-semibold transition-colors group-hover:text-teal" style="color:#ccd6f6;">
-            {exp.role}
-          </h3>
-          <span style="color:#64ffda; opacity:0.5;">·</span>
-          <span class="text-sm" style="color:#8892b0;">{exp.organization}</span>
+        <!-- Role + org, period -->
+        <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 mb-2">
+          <div class="flex flex-wrap items-baseline gap-x-2">
+            <h3 class="text-sm font-semibold transition-colors group-hover:text-teal" style="color:#ccd6f6;">
+              {exp.role}
+            </h3>
+            <span style="color:#64ffda; opacity:0.5;">·</span>
+            <span class="text-sm" style="color:#8892b0;">{exp.organization}</span>
+          </div>
+          <p class="font-mono text-xs tracking-widest whitespace-nowrap" style="color:#64ffda; opacity:0.5;">
+            {exp.period}
+          </p>
         </div>
-
-        <!-- Description -->
-        <p class="text-sm leading-relaxed mb-3" style="color:#8892b0;">{exp.description}</p>
 
         <!-- Points -->
         <ul class="space-y-1.5">
@@ -49,7 +45,7 @@ const { experiences } = Astro.props
 
 <style>
   .exp-card {
-    padding: 20px;
+    padding: 16px 20px;
     border-radius: 8px;
     border: 1px solid transparent;
     background: transparent;
@@ -60,5 +56,9 @@ const { experiences } = Astro.props
     border-color: rgba(100,255,218,0.1);
     box-shadow: 0 8px 32px rgba(2,12,27,0.5);
     transform: translateY(-2px);
+  }
+
+  @media (max-width: 600px) {
+    .exp-card { padding: 12px 0; }
   }
 </style>

@@ -43,7 +43,7 @@ const { personal } = Astro.props
   </div>
 
   <!-- Other channels -->
-  <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+  <div class="grid grid-cols-3 gap-3">
     {[
       { label: 'GitHub',   href: personal.github,   desc: 'Source & projects' },
       { label: 'LinkedIn', href: personal.linkedin,  desc: 'Professional profile' },
@@ -53,11 +53,10 @@ const { personal } = Astro.props
         href={ch.href}
         target="_blank"
         rel="noopener noreferrer"
-        class="card p-4 block group"
+        class="card px-4 py-3 block group"
       >
-        <p class="text-sm font-medium mb-1 group-hover:text-teal transition-colors" style="color:#ccd6f6;">{ch.label}</p>
-        <p class="text-xs" style="color:#8892b0;">{ch.desc}</p>
-        <p class="font-mono text-xs mt-2 group-hover:text-teal transition-colors" style="color:#64ffda; opacity:0.5;">↗ Visit</p>
+        <p class="text-sm font-medium group-hover:text-teal transition-colors" style="color:#ccd6f6;">{ch.label} <span class="font-mono text-xs" style="color:#64ffda; opacity:0.5;">↗</span></p>
+        <p class="hidden sm:block text-xs mt-1" style="color:#8892b0;">{ch.desc}</p>
       </a>
     ))}
   </div>

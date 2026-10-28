@@ -26,7 +26,7 @@ const { personal, Projects: projects, skills, experiences, activities, certifica
   <!-- Mobile fullscreen menu -->
   <div id="mobile-menu" class="hidden fixed inset-0 z-40 flex flex-col justify-center px-10 gap-6 md:hidden"
     style="background:rgba(15,23,42,0.98);backdrop-filter:blur(16px);">
-    {['projects','skills','certifications','experiences','activities','contact'].map(id => (
+    {['projects','experiences','skills','certifications','activities','contact'].map(id => (
       <a href={`#${id}`} data-mobile-link
         class="font-mono text-2xl font-semibold text-slate-w hover:text-teal transition-colors capitalize tracking-widest border-b border-white/5 pb-4">
         {id}
@@ -39,9 +39,9 @@ const { personal, Projects: projects, skills, experiences, activities, certifica
     <Sidebar personal={personal} />
     <main class="main-content">
       <Projects     projects={projects} />
+      <Experiences  experiences={experiences} />
       <Skills       skills={skills} />
       <Certifications certifications={certifications} />
-      <Experiences  experiences={experiences} />
       <Activities   activities={activities} />
       <Contact      personal={personal} />
       <!-- Footer inside main -->
@@ -82,7 +82,7 @@ const { personal, Projects: projects, skills, experiences, activities, certifica
   })
 
   // Scroll spy — updates sidebar nav active state
-  const sections = ['projects','skills','certifications','experiences','activities','contact']
+  const sections = ['projects','experiences','skills','certifications','activities','contact']
   const navLinks = document.querySelectorAll('[data-nav-link]')
 
   const observer = new IntersectionObserver(entries => {

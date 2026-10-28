@@ -2,16 +2,16 @@
 const { personal } = Astro.props
 const navItems = [
   { label: 'Projects',    id: 'projects'    },
+  { label: 'Experience',  id: 'experiences' },
   { label: 'Skills',      id: 'skills'      },
   { label: 'Certifications', id: 'certifications' },
-  { label: 'Experience',  id: 'experiences' },
   { label: 'Activities',  id: 'activities'  },
   { label: 'Contact',     id: 'contact'     },
 ]
 ---
 
 <aside class="sidebar">
-  <div class="flex flex-col justify-between gap-8 h-full">
+  <div class="flex flex-col gap-7">
 
     <!-- Top: name + tagline + nav -->
     <div>
@@ -32,13 +32,9 @@ const navItems = [
       </p>
 
      <!-- Role statement -->
-<div class="md:mb-10 max-w-xs">
+<div class="max-w-xs">
   <p class="text-sm leading-relaxed mb-4" style="color:#8892b0;">
-    Building practical systems across security, networks, intelligence, and applied AI.
-  </p>
-
-  <p class="text-sm leading-relaxed mb-4" style="color:#8892b0;">
-    I like working on projects that connect clear engineering with real technical problems.
+    Aspiring cybersecurity analyst building practical systems across security, networks, threat intelligence, and applied AI.
   </p>
 
   <div class="flex flex-wrap gap-2">
@@ -50,23 +46,10 @@ const navItems = [
   </div>
 </div>
 
-      <!-- Navigation -->
-      <nav aria-label="Sections" class="hidden md:flex flex-col gap-1">
-        {navItems.map(({ label, id }) => (
-          <a
-            href={`#${id}`}
-            data-nav-link
-            data-section={id}
-            class="nav-link"
-          >
-            {label}
-          </a>
-        ))}
-      </nav>
     </div>
 
-    <!-- Bottom: social links -->
-    <div class="flex items-center gap-5">
+    <!-- Social links -->
+    <div class="flex items-center gap-4 -ml-1">
       <!-- GitHub -->
       <a href={personal.github} target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
@@ -102,6 +85,20 @@ const navItems = [
         </svg>
       </a>
     </div>
+
+    <!-- Navigation -->
+    <nav aria-label="Sections" class="hidden md:flex flex-col">
+      {navItems.map(({ label, id }) => (
+        <a
+          href={`#${id}`}
+          data-nav-link
+          data-section={id}
+          class="nav-link"
+        >
+          {label}
+        </a>
+      ))}
+    </nav>
 
   </div>
 </aside>

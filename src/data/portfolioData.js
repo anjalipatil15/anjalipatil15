@@ -94,11 +94,8 @@ export const portfolioData = {
       role: "Network Security Intern",
       organization: "The Cyber Ledger (Remote)",
       period: "May 2026 – July 2026",
-      description:
-        "Worked on network traffic analysis, security event review, and vulnerability assessment using industry-standard security tools.",
       points: [
-        "Analyzed network traffic and security events using Wireshark and Nmap",
-        "Performed vulnerability assessments with Burp Suite and Metasploit",
+        "Analyzed network traffic and security events using Wireshark and Nmap, and performed vulnerability assessments with Burp Suite and Metasploit",
         "Applied malware-analysis fundamentals, Zero Trust concepts, and security best practices aligned with ISO 27001"
       ]
     },
@@ -106,36 +103,26 @@ export const portfolioData = {
       role: "Backend Development Intern",
       organization: "Veena Infotech (Veena Group), Mumbai",
       period: "June 2025 – August 2025",
-      description:
-        "Worked on backend and maintenance work for the Society Websites and the Veena Management System's Security & Maintenance module using PHP, HTML, CSS, and JavaScript.",
       points: [
-        "Contributed to the Veena Estate Consultants project",
-        "Gained hands-on exposure to web security considerations and system stability",
-        "Worked with existing codebases and backend debugging workflows"
+        "Built backend features in PHP, HTML, CSS, and JavaScript for the Society Websites and the Veena Management System's Security & Maintenance module",
+        "Contributed to the Veena Estate Consultants project, working on web security considerations, system stability, and backend debugging"
       ]
     },
     {
       role: "Head of Tech Department",
       organization: "MUN Society, NMIMS MPSTME",
       period: "2024 – 2025",
-      description:
-        "Led a technical team building and maintaining websites and backend workflows for MumbaiMUN using Astro.js, HTML, CSS, and JavaScript.",
       points: [
-        "Built a QR-based delegate verification system used by 500+ delegates at MumbaiMUN",
-        "Managed technical planning, documentation, and version control",
-        "Mentored team members for smooth event execution"
+        "Led the tech team building MumbaiMUN's websites and backend workflows, including a QR-based delegate verification system used by 500+ delegates",
+        "Managed technical planning, documentation, and version control, and mentored team members"
       ]
     },
     {
       role: "Tech Executive",
       organization: "Maarg Mumbai (Volunteer)",
       period: "2024 – Present",
-      description:
-        "Support frontend development, website updates, and digital infrastructure for volunteer-led community initiatives.",
       points: [
-        "Worked on website updates and interface improvements",
-        "Supported technical execution for community-focused projects",
-        "Collaborated on digital infrastructure for social impact work"
+        "Support frontend development, website updates, and digital infrastructure for volunteer-led community initiatives"
       ]
     }
   ],
@@ -164,39 +151,21 @@ export const portfolioData = {
     title: "Hack The Box",
     type: "Hands-on Practice",
     description:
-      "I use Hack The Box to build practical experience with Linux, networking, enumeration, web security, and privilege escalation.",
-    items: [
-      "Working through beginner-friendly machines and labs",
-      "Practicing service enumeration and basic exploit paths",
-      "Improving Linux command-line confidence",
-      "Writing down methods, mistakes, and useful patterns"
-    ],
+      "Working through machines and labs to build practical skill in Linux, enumeration, web security, and privilege escalation, and documenting methods along the way.",
     link: "https://profile.hackthebox.com/profile/019c8ad1-fa91-737d-bee5-96eae0d5add7"
   },
   {
     title: "Medium",
     type: "Writing",
     description:
-      "I use Medium to document what I’m learning in cybersecurity, OSINT, and technical projects in a way that is clear and useful.",
-    items: [
-      "Cybersecurity learning notes",
-      "Project breakdowns and build logs",
-      "OSINT and investigation-style writeups",
-      "Reflections from labs, tools, and research"
-    ],
+      "Cybersecurity learning notes, project breakdowns, OSINT write-ups, and reflections from labs and research.",
     link: "https://medium.com/@anjalipatil.dev"
   },
   {
     title: "OSINT Practice",
     type: "Research",
     description:
-      "I’m building a structured OSINT workflow focused on collecting public information carefully, checking sources, and presenting findings clearly.",
-    items: [
-      "Source discovery and validation",
-      "Timeline and link analysis",
-      "Public-data investigation methods",
-      "Clear reporting without overclaiming"
-    ],
+      "Building a structured OSINT workflow: source discovery and validation, timeline and link analysis, and clear reporting without overclaiming.",
     link: "#"
   }
 ],
