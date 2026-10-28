@@ -3,13 +3,14 @@ import Layout       from '../layout/Layout.astro'
 import Sidebar      from '../components/Sidebar.astro'
 import Certifications from '../components/Certifications.astro'
 import Projects     from '../components/Projects.astro'
+import Skills       from '../components/Skills.astro'
 import Experiences  from '../components/Experiences.astro'
 import Activities   from '../components/Activities.astro'
 import Contact      from '../components/Contact.astro'
 import { portfolioData } from '../data/portfolioData.js'
 
 
-const { personal, Projects: projects, experiences, activities, certifications } = portfolioData
+const { personal, Projects: projects, skills, experiences, activities, certifications } = portfolioData
 ---
 
 <Layout>
@@ -25,7 +26,7 @@ const { personal, Projects: projects, experiences, activities, certifications } 
   <!-- Mobile fullscreen menu -->
   <div id="mobile-menu" class="hidden fixed inset-0 z-40 flex flex-col justify-center px-10 gap-6 md:hidden"
     style="background:rgba(15,23,42,0.98);backdrop-filter:blur(16px);">
-    {['projects','certifications','experiences','activities','contact'].map(id => (
+    {['projects','skills','certifications','experiences','activities','contact'].map(id => (
       <a href={`#${id}`} data-mobile-link
         class="font-mono text-2xl font-semibold text-slate-w hover:text-teal transition-colors capitalize tracking-widest border-b border-white/5 pb-4">
         {id}
@@ -38,6 +39,7 @@ const { personal, Projects: projects, experiences, activities, certifications } 
     <Sidebar personal={personal} />
     <main class="main-content">
       <Projects     projects={projects} />
+      <Skills       skills={skills} />
       <Certifications certifications={certifications} />
       <Experiences  experiences={experiences} />
       <Activities   activities={activities} />
@@ -80,7 +82,7 @@ const { personal, Projects: projects, experiences, activities, certifications } 
   })
 
   // Scroll spy — updates sidebar nav active state
-  const sections = ['projects','certifications','experiences','activities','contact']
+  const sections = ['projects','skills','certifications','experiences','activities','contact']
   const navLinks = document.querySelectorAll('[data-nav-link]')
 
   const observer = new IntersectionObserver(entries => {

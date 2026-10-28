@@ -1,0 +1,38 @@
+---
+const { skills } = Astro.props
+---
+
+<section id="skills" class="section" aria-labelledby="skills-heading">
+  <p class="section-label" id="skills-heading">Skills</p>
+
+  <div class="space-y-3">
+    {skills.map((group: { category: string; items: string[] }) => (
+      <div class="skill-card group">
+        <p class="text-sm font-medium mb-3 transition-colors group-hover:text-teal" style="color:#ccd6f6;">
+          {group.category}
+        </p>
+        <div class="flex flex-wrap gap-1.5">
+          {group.items.map((item: string) => (
+            <span class="tag">{item}</span>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .skill-card {
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    background: transparent;
+    transition: all 0.25s ease;
+  }
+  .skill-card:hover {
+    background: #1e293b;
+    border-color: rgba(100,255,218,0.1);
+    box-shadow: 0 4px 20px rgba(2,12,27,0.4);
+    transform: translateY(-1px);
+  }
+</style>

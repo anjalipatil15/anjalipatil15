@@ -2,6 +2,7 @@
 const { personal } = Astro.props
 const navItems = [
   { label: 'Projects',    id: 'projects'    },
+  { label: 'Skills',      id: 'skills'      },
   { label: 'Certifications', id: 'certifications' },
   { label: 'Experience',  id: 'experiences' },
   { label: 'Activities',  id: 'activities'  },
@@ -9,8 +10,8 @@ const navItems = [
 ]
 ---
 
-<aside class="sidebar hidden md:flex">
-  <div class="flex flex-col justify-between h-full">
+<aside class="sidebar">
+  <div class="flex flex-col justify-between gap-8 h-full">
 
     <!-- Top: name + tagline + nav -->
     <div>
@@ -27,11 +28,11 @@ const navItems = [
         B.Tech Computer Engineering
       </p>
       <p class="font-mono text-xs tracking-widest uppercase mb-6" style="color:#8892b0;">
-        NMIMS Mumbai
+        NMIMS MPSTME Mumbai · 2027
       </p>
 
      <!-- Role statement -->
-<div class="mb-10 max-w-xs">
+<div class="md:mb-10 max-w-xs">
   <p class="text-sm leading-relaxed mb-4" style="color:#8892b0;">
     Building practical systems across security, networks, intelligence, and applied AI.
   </p>
@@ -41,7 +42,7 @@ const navItems = [
   </p>
 
   <div class="flex flex-wrap gap-2">
-    {['Cybersecurity', 'Networking', 'OSINT', 'AI', 'Machine Learning'].map((item) => (
+    {['Cybersecurity', 'Threat Intelligence', 'Networking', 'OSINT', 'Machine Learning'].map((item) => (
       <span class="keyword-chip">
         {item}
       </span>
@@ -50,7 +51,7 @@ const navItems = [
 </div>
 
       <!-- Navigation -->
-      <nav aria-label="Sections" class="flex flex-col gap-1">
+      <nav aria-label="Sections" class="hidden md:flex flex-col gap-1">
         {navItems.map(({ label, id }) => (
           <a
             href={`#${id}`}
@@ -89,6 +90,15 @@ const navItems = [
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
           <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
           <polyline points="22,6 12,13 2,6"/>
+        </svg>
+      </a>
+      <!-- Resume -->
+      <a href={personal.resume} target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Resume">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <line x1="8" y1="13" x2="16" y2="13"/>
+          <line x1="8" y1="17" x2="16" y2="17"/>
         </svg>
       </a>
     </div>
